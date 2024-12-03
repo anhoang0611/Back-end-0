@@ -20,7 +20,7 @@ app.use('/', webRoutes);
 connection.query(
     'SELECT * FROM Users u',
     function (err, results, fields) {
-        console.log(">>>results= ", results);
+        // console.log(">>>results= ", results);
 
     }
 )
