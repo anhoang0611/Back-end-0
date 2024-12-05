@@ -14,8 +14,32 @@ const getHoi = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-    console.log(">>> req.body: ", req.body);
-    res.send('create')
+
+    let email = req.body.email;
+    let name = req.body.myname;
+    let city = req.body.city;
+
+    console.log(">>> email,name,city: ", email, name, city);
+
+    // let {email, name, city} = req.body;
+
+
+    // INSERT INTO Users(email, name, city)
+    // VALUES("test", "hoidanit", "hcm");
+
+    connection.query(
+        `INSERT INTO 
+        Users (email , name , city) 
+        VALUES(?, ?, ?)`,
+        [email, name, city],
+        function (err, results) {
+            console.log(results);
+
+            res.send('create successs')
+        }
+    )
+
+
 }
 module.exports = {
     getHomepage,
