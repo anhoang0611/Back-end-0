@@ -51,11 +51,17 @@ const getCreatePage = (req, res) => {
     res.render('create.ejs')
 
 }
+const getUpdatePage = (req, res) => {
+    console.log('check: ', req.params)
+    res.render('edit.ejs')
+
+}
 
 module.exports = {
     getHomepage,
     getABC,
     getHoi,
     postCreateUser,
-    getCreatePage
+    getCreatePage,
+    getUpdatePage
 }
