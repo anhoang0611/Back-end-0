@@ -22,9 +22,18 @@ configViewEngine(app);
 //khai bao route
 app.use('/', webRoutes);
 
-//test connection
-connection();
 
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+// connection();
+//self-running function
+(async () => {
+    //test connection
+    try {
+        await connection();
+        app.listen(port, hostname, () => {
+            console.log(`Backend app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(">>> error: ", error)
+    }
+})()
+
