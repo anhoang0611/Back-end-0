@@ -4,7 +4,8 @@ const express = require('express')//commonjs
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web');
 const connection = require('./config/database');
-const mongoose = require('mongoose');
+const Kitten = require('./models/Kitten');
+
 
 // import express from 'express';
 const app = express(); //app express
@@ -23,14 +24,11 @@ configViewEngine(app);
 //khai bao route
 app.use('/', webRoutes);
 
-const kittySchema = new mongoose.Schema({
-    name: String
-});
-
-const Kitten = mongoose.model('Kitten', kittySchema);
-const cat = new Kitten({ name: 'Kitty meow' });
-
+//create data
+const cat = new Kitten({ name: 'Kitty model' });
 cat.save();
+
+
 
 // connection();
 //self-running function
