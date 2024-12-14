@@ -4,7 +4,7 @@ const express = require('express')//commonjs
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web');
 const connection = require('./config/database');
-const Kitten = require('./models/Kitten');
+
 
 
 // import express from 'express';
@@ -23,12 +23,6 @@ configViewEngine(app);
 
 //khai bao route
 app.use('/', webRoutes);
-
-//create data
-const cat = new Kitten({ name: 'Kitty model' });
-cat.save();
-
-
 
 // connection();
 //self-running function
