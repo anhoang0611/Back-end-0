@@ -4,7 +4,7 @@ const express = require('express')//commonjs
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web');
 const connection = require('./config/database');
-
+const apiRoutes = require('./routes/api');
 
 
 // import express from 'express';
@@ -23,6 +23,7 @@ configViewEngine(app);
 
 //khai bao route
 app.use('/', webRoutes);
+app.use('/v1/api/', apiRoutes);
 
 // connection();
 //self-running function
