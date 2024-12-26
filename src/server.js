@@ -2,6 +2,8 @@ require('dotenv').config()
 
 const express = require('express')//commonjs
 const configViewEngine = require('./config/viewEngine');
+
+//routes
 const webRoutes = require('./routes/web');
 const connection = require('./config/database');
 const apiRoutes = require('./routes/api');
