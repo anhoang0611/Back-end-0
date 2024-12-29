@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')//commonjs
+const fileUpload = require('express-fileupload');
 const configViewEngine = require('./config/viewEngine');
 
 //routes
@@ -19,6 +20,8 @@ const hostname = process.env.HOST_NAME;
 app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //for form data
 
+//config file upload
+app.use(fileUpload());
 
 //config template engine 
 configViewEngine(app);
