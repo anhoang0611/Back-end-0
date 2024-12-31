@@ -3,7 +3,7 @@ const express = require('express');
 const routerAPI = express.Router();
 
 const { getUsersAPI, postCreateUserAPI, putUpdateUserAPI,
-    deleteUserAPI, postUploadSingleFile } = require('../controllers/apiController');
+    deleteUserAPI, postUploadSingleFile, postUploadMultipleFile } = require('../controllers/apiController');
 
 //router.Method('/route', handler)
 
@@ -17,5 +17,6 @@ routerAPI.delete('/users', deleteUserAPI);
 
 routerAPI.post('/file', postUploadSingleFile);//upload file
 
+routerAPI.post('/files', postUploadMultipleFile);
 
 module.exports = routerAPI; //export default
