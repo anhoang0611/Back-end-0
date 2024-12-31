@@ -1,6 +1,6 @@
 const uploadSingleFile = async (fileObject) => {
 
-    let uploadPath = __dirname + '/ABC/' + fileObject.name;
+    let uploadPath = __dirname + '/../public/images/upload/' + fileObject.name;
 
     // Use the mv() method to place the file somewhere on your server
 
