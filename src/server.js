@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')//commonjs
-const fileUpload = require('express-fileupload');
+const fileUpload = require('express-fileupload');// cấu hình upload file
 const configViewEngine = require('./config/viewEngine');
 
 //routes

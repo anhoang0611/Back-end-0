@@ -68,7 +68,7 @@ const deleteUserAPI = async (req, res) => {
 }
 
 const postUploadSingleFile = async (req, res) => {
-    console.log('req.files', req.files);
+    // console.log('req.files', req.files);
 
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).json({
@@ -78,10 +78,11 @@ const postUploadSingleFile = async (req, res) => {
     }
 
     let result = await uploadSingleFile(req.files.image);
-    console.log(">>> result", result);
-
-
-    return res.send('upload file');
+    return res.status(200).json(
+        {
+            EC: 0,
+            data: result
+        });
 }
 
 const postUploadMultipleFile = async (req, res) => {
@@ -93,7 +94,7 @@ const postUploadMultipleFile = async (req, res) => {
     }
     //upload multiple file => files is array
     if (Array.isArray(req.files.image)) {
-        console.log(">>> req.files.image", req.files.image);
+        // console.log(">>> req.files.image", req.files.image);
         //upload multiple file
         let result = await uploadMultipleFile(req.files.image);
         return res.status(200).json({
