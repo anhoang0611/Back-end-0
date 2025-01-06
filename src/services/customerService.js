@@ -49,9 +49,19 @@ const putUpdateCustomerService = async (id, name, address, email) => {
         return null;
     }
 };
+const deleteACustomerService = async (id) => {
+    try {
+        let result = await Customer.deleteById(id);
+        return result;
+    } catch (error) {
+        console.log(">>> check error: ", error);
+        return null;
+    }
+}
 module.exports = {
     createCustomerService,
     createArrayCustomerService,
     getAllCustomersService,
-    putUpdateCustomerService
+    putUpdateCustomerService,
+    deleteACustomerService
 }

@@ -17,10 +17,7 @@ const customerSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 //add plugin
-customerSchema.plugin(mongoose_Delete, { deletedAt: true });
-
-
-
+customerSchema.plugin(mongoose_Delete, { deletedAt: true, overrideMethods: 'all' });
 
 
 //create model
