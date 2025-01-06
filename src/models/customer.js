@@ -14,7 +14,14 @@ const customerSchema = new mongoose.Schema({
     image: String,
 
     description: String
-}, { timestamps: true });
+}, {
+    timestamps: true,
+    // statics: {
+    //     findByHoidanit(name) {
+    //         return this.find({ name: new RegExp(name, 'i') });
+    //     }
+    // }
+});
 
 //add plugin
 customerSchema.plugin(mongoose_Delete, { deletedAt: true, overrideMethods: 'all' });
