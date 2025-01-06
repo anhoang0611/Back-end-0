@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const mongoose_Delete = require('mongoose-delete');
 //shape data
 const userSchema = new mongoose.Schema({
     name: String,
@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
 
 });
 
-
+//add plugin
+userSchema.plugin(mongoose_Delete, { deletedAt: true });
 //create model
 const User = mongoose.model('user', userSchema);
 
