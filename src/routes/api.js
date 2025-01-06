@@ -24,10 +24,10 @@ routerAPI.put('/customers', putUpdateCustomer);
 routerAPI.delete('/customers', deleteACustomer);
 routerAPI.delete('/customers-many', deleteManyCustomer);
 
-routerAPI.get('/info', (req, res) => {
-    console.log(">>> check query: ", req.query);
+routerAPI.get('/info/:name/:address', (req, res) => {
+    console.log(">>> check query: ", req.params);
     return res.status(200).json({
-        data: req.query
+        data: req.params
     })
 });
 
