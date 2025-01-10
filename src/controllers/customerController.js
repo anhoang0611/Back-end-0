@@ -6,7 +6,7 @@ const { createCustomerService,
     deleteACustomerService,
     deleteManyCustomerService
 } = require('../services/customerService');
-
+const aqp = require('api-query-params');
 //{key: value, key1: value1}
 module.exports = {
     postCreateCustomer: async (req, res) => {
@@ -60,11 +60,12 @@ module.exports = {
 
         let limit = req.query.limit;
         let page = req.query.page;
+        let name = req.query.name;
         let result = null;
 
         if (limit && page) {
-            console.log(">>> check query: ", req.query);
-            result = await getAllCustomersService(limit, page);
+
+            result = await getAllCustomersService(limit, page, name, req.query);
         }
         else {
             result = await getAllCustomersService();
