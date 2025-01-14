@@ -36,7 +36,7 @@ const getAllCustomersService = async (limit, page, name, queryString) => {
         if (limit && page) {
             let offset = (page - 1) * limit;
 
-            const { filter, skip, sort, projection, population } = aqp(queryString);
+            const { filter } = aqp(queryString);
             delete filter.page;
 
 
