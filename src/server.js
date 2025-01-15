@@ -56,34 +56,33 @@ app.use('/v1/api/', apiRoutes);
         const collection = db.collection('customers');
 
         //embedded data
-        //chỉ dùng kiểu nhúng này khi muốn quan hệ 1-1 hoặc 1-n
-        //và khi dữ liệu con không thay đổi quá nhiều 
+        // lưu theo kiểu reference
+        //dùng kiểu quan hệ id-n
+
+
+        // {
+        //     id: 1,
+        //         province: 'HN',
+        //             country: {
+        //         name: 'Vietnam',
+        //             code: 1000
+        //     }
+        // },
+
+
+        // {
+        //     id: 2,
+        //         province: 'HN',
+        //             country: {
+        //         name: 'Vietnam',
+        //             code: 1000
+        //     }
+        // }
         collection.insertOne(
             {
                 name: 'John',
                 address:
-                    [
-                        {
-                            province: 'HN',
-                            country: {
-                                name: 'Vietnam',
-                                code: 1000
-                            }
-                        },
-
-
-                        {
-                            province: 'HN',
-                            country: {
-                                name: 'Vietnam',
-                                code: 1000
-                            }
-                        }
-                    ]
-
-
-
-
+                    [1, 2]
             });
 
         // collection.insertOne({ name: 'John', age: 30 });
