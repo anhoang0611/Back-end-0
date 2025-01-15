@@ -37,7 +37,7 @@ app.use('/v1/api/', apiRoutes);
     //test connection
     try {
         //using mongoose
-        // await connection();
+        await connection();
 
         //using mongodb driver
         //Connection URL
@@ -55,11 +55,44 @@ app.use('/v1/api/', apiRoutes);
         const db = client.db(dbName);
         const collection = db.collection('customers');
 
+        //embedded data
+        //chỉ dùng kiểu nhúng này khi muốn quan hệ 1-1 hoặc 1-n
+        //và khi dữ liệu con không thay đổi quá nhiều 
+        collection.insertOne(
+            {
+                name: 'John',
+                address:
+                    [
+                        {
+                            province: 'HN',
+                            country: {
+                                name: 'Vietnam',
+                                code: 1000
+                            }
+                        },
+
+
+                        {
+                            province: 'HN',
+                            country: {
+                                name: 'Vietnam',
+                                code: 1000
+                            }
+                        }
+                    ]
+
+
+
+
+            });
+
         // collection.insertOne({ name: 'John', age: 30 });
         // collection.insertOne({ address: 'HN' });
         // console.log(">>> find : ", await collection.find({ address: 'HN' }).toArray())
-        let a = await collection.findOne({ address: 'HN' })
-        console.log(">>> find= ", a)
+
+        //find one
+        // let a = await collection.findOne({ address: 'HN' })
+        // console.log(">>> find= ", a)
 
         app.listen(port, hostname, () => {
             console.log(`Backend app listening on port ${port}`)
