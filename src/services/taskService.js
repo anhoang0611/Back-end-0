@@ -21,7 +21,7 @@ module.exports = {
         return result;
     },
     dTask: async (id) => {
-        let result = await Task.deleteOne({ _id: id });
+        let result = await Task.deleteById(id);
         return result;
     }
 }
