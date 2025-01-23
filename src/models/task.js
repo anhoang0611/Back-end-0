@@ -4,8 +4,8 @@ const mongoose_delete = require('mongoose-delete');
 
 const projectSchema = new mongoose.Schema({
     name: String,
-    startDate: Date,
-    endDate: Date,
+    startDate: String,
+    endDate: String,
     description: String,
 
 })
@@ -28,7 +28,7 @@ const taskSchema = new mongoose.Schema(
         startDate: String,
         endDate: String,
         userInfor: userSchema,
-        project: projectSchema,
+        projectInfor: projectSchema,
     },
     {
         timestamps: true

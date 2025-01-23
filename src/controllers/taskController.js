@@ -1,4 +1,4 @@
-const { createTask, getAllTask } = require('../services/taskService');
+const { createTask, getAllTask, uTask, dTask } = require('../services/taskService');
 
 module.exports = {
     postCreateTask: async (req, res) => {
