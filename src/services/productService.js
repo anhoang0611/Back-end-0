@@ -1,4 +1,5 @@
 const Project = require('../models/project');
+const aqp = require('api-query-params');
 
 module.exports = {
     createProject: async (data) => {
@@ -7,10 +8,10 @@ module.exports = {
             return result;
         }
         if (data.type === 'ADD-USER') {
-            console.log(">>> check data: ", data);
+
             let myProject = await Project.findById(data.projectId).exec();
 
-            console.log(">>> check myProject: ", myProject);
+
             for (let i = 0; i < data.usersArr.length; i++) {
                 myProject.userInfor.push(data.usersArr[i]);
             }
@@ -20,5 +21,16 @@ module.exports = {
             return newResult;
         }
         return null;
+    },
+
+    getProject: async (queryString) => {
+        const page = queryString.page;
+        const { filter, limit, population } = aqp(queryString);
+
+        delete filter.page;
+        let offset = (page - 1) * limit;
+
+        let result = await Project.find(filter).populate(population).skip(offset).limit(limit).exec();
+        return result;
     }
 }
