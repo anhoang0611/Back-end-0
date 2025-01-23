@@ -3,7 +3,6 @@ const aqp = require('api-query-params');
 
 
 const createCustomerService = async (customerData) => {
-    console.log(">>> check customerData: ", customerData)
     try {
         let result = await Customer.create({
             name: customerData.name,

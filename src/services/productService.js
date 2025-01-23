@@ -20,7 +20,17 @@ module.exports = {
 
             return newResult;
         }
-        return null;
+        if (data.type === 'REMOVE-USER') {
+            let myProject = await Project.findById(data.projectId).exec();
+
+            for (let i = 0; i < data.usersArr.length; i++) {
+                myProject.userInfor.pull(data.usersArr[i]);
+            }
+
+            let newResult = await myProject.save();
+            return newResult;
+        }
+
     },
 
     getProject: async (queryString) => {
@@ -32,5 +42,27 @@ module.exports = {
 
         let result = await Project.find(filter).populate(population).skip(offset).limit(limit).exec();
         return result;
+    },
+    uProject: async (data) => {
+        try {
+            let result = await Project.updateOne(
+                { _id: data.id }, { ...data }
+            );
+            return result;
+        } catch (error) {
+            console.log(">>> check error: ", error);
+            return null;
+        }
+
+    },
+    dProject: async (id) => {
+        try {
+            let result = await Project.deleteById(id);
+            return result;
+        } catch (error) {
+            console.log(">>> check error: ", error);
+            return null;
+        }
+
     }
 }
